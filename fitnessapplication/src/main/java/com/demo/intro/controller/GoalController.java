@@ -3,17 +3,12 @@ package com.demo.intro.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 import com.demo.intro.model.Goal;
 import com.demo.intro.model.Userrr;
 import com.demo.intro.repository.GoalRepository;
 import com.demo.intro.repository.UserrrRepository;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/goals")
@@ -38,4 +33,15 @@ public class GoalController {
     public List<Goal> getGoals(@PathVariable Long userId) {
         return goalRepository.findByUserrrId(userId);
     }
+
+
+   @DeleteMapping("/delete")
+	public String delete(@RequestParam Long id) {
+      goalRepository.deleteById(id);
+	  return  "deleted";
+	}
 }
+
+
+
+
