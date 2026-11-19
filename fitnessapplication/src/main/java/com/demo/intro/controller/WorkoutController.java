@@ -35,8 +35,14 @@ public class WorkoutController {
         return workoutRepository.save(workout);
     }
     
+    @GetMapping("/user")
+    public List<Workout> getWorkouts(@Requestparam String type) {
+        return workoutRepository.findAllByType(String type);
+    }
+
     @GetMapping("/user/{userId}")
     public List<Workout> getWorkouts(@PathVariable Long userId) {
         return workoutRepository.findByUserrrId(userId);
     }
+
 }
